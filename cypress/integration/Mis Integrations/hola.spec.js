@@ -5,12 +5,7 @@
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
 
-// functions
-
-/*function colaButton(){
-    return cy.get(':nth-child(1) > :nth-child(3) > .row > .col-5 > .input-group-append > .btn');
-}*/
-
+// Functions
 function totalGetText(){
     return cy.get(':nth-child(4) > .ng-binding');
 }
@@ -37,14 +32,14 @@ function paramsWineButton(numClicks){
     }
 }
 
-
-
 // Cypress
-
 describe('Hello Cypress', () => {
+
+    // - - - - - - - - - - Hello - - - - - - - - - -
     it('Says hello', () => {
       expect(true).to.equal(true)
     })
+
     // - - - - - - - - - - Cola - - - - - - - - - -
     it('Order a Cola', () => {
         cy.visit('http://localhost:3000/#!/')
@@ -56,7 +51,7 @@ describe('Hello Cypress', () => {
         cy.get('p').should("contain.text","Coming right up! ~bzzzt~")
     })
 
-    it('Order Two Colas', () => {
+    /*it('Order Two Colas', () => {
         cy.visit('http://localhost:3000/#!/')
         paramsColaButton(2);
         totalGetText().should("contain.text","€2.50")
@@ -132,5 +127,5 @@ describe('Hello Cypress', () => {
         cy.get('#ageInput').type("19")
         cy.get('.btn-success').should('be.enabled')
         cy.get('.btn-success').click()
-    })
+    })*/
 })
