@@ -38,12 +38,13 @@ pipeline {
         stage('Test') {
             steps {
                 nodejs('node-14.18.2'){
-                sh 'yarn run cypress run'
+                    sh 'yarn run cypress run'
+                }
             }
         }
         post {
             always {
-                junit 'build/test-results/test/*.xml'
+                junit 'results/*.xml'
             }
         }
     }
