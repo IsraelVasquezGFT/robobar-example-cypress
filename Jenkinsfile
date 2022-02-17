@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 nodejs('node-14.18.2'){
-                    sh 'yarn run cypress run'
+                    sh 'yarn cy:ci || true'
                 }
             }
             post {
