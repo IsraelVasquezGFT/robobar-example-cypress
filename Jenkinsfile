@@ -1,26 +1,10 @@
-/*pipeline {
-    agent any
-    stages {
-        stage('Clean') {
-            steps {
-                sh 'yarn run cypress run'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './gradlew test'
-            }
-            post {
-                always {
-                    junit 'build/test-results/test/*.xml'
-                }
-            }
-        }
-    }
-}*/
-
 pipeline {
     agent any
+    stage('Start') {
+        steps {
+        sh 'yarn install'
+        }
+    }
     stage('Test') {
         steps {
             sh 'yarn run cypress run'
