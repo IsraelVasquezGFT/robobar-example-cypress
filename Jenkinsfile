@@ -1,17 +1,24 @@
 pipeline {
     agent any
-    stage('Start') {
-        steps {
-        sh 'yarn install'
+    stages {
+        stage('Open') {
+            steps {
+                nodejs('node-14.18.2'){
+                    sh 'yarn install'
+                }
+            }
         }
     }
+
     stage('Test') {
         steps {
-            sh 'yarn run cypress run'
+            nodejs('node-14.18.2'){
+                sh 'yarn run cypress run'
+            }
         }
         post {
             always {
-                junit ' sh cy:ci'
+                junit 'results/*.xml'
             }
         }
     }
