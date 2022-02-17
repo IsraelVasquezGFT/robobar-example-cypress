@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        ansiColor('xterm')
+    }
     stages {
         stage('Open') {
             steps {
@@ -18,7 +21,7 @@ pipeline {
     }
     post {
         always {
-            junit '/results/*.xml'
+            junit '/results/test-output-[hash].xml'
         }
     }
 }
