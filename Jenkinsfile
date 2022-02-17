@@ -17,11 +17,16 @@ pipeline {
                     sh 'yarn run cypress run'
                 }
             }
+            post {
+                always {
+                    junit 'results/*.xml'
+                }
+            }
         }
     }
-    post {
+    /*post {
         always {
             junit '/results/test-output-[hash].xml'
         }
-    }
+    }*/
 }
