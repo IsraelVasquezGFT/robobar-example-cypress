@@ -4,22 +4,21 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
+        when { expression{false} }
         stage('Open') {
-            when { expression{false} }
             steps {
                 nodejs('node-14.18.2'){
                     sh 'yarn install'
                 }
             }
         }
+        when { expression{false} }
         stage('Test') {
-            when { expression{false} }
             steps {
                 nodejs('node-14.18.2'){
                     sh 'yarn cy:ci || true'
                 }
             }
-            when { expression{false} }
             post {
                 always {
                     junit 'results/*.xml'
