@@ -23,10 +23,15 @@ pipeline {
                 }
             }
         }
-    }
-    /*post {
-        always {
-            junit '/results/test-output-[hash].xml'
+        stage('Security'){
+            steps {
+                sh 'trivy fs --format json --output trivy-results.json .'
+            }
+            post {
+                always {
+                    recordIssues(tools: [trivy(pattern: 'trivy-results.json')])
+                }
+            }
         }
-    }*/
+    }
 }
