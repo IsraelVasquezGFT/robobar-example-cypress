@@ -11,7 +11,6 @@ pipeline {
                 }
             }
         }
-
         stage('Test') {
             //when { expression{false} }
             steps {
