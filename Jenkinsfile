@@ -4,7 +4,6 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
-        when { expression{false} }
         stage('Open') {
             steps {
                 nodejs('node-14.18.2'){
@@ -12,8 +11,9 @@ pipeline {
                 }
             }
         }
-        when { expression{false} }
+
         stage('Test') {
+            //when { expression{false} }
             steps {
                 nodejs('node-14.18.2'){
                     sh 'yarn cy:ci || true'
